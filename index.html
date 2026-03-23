@@ -3,116 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6-Coach Basketball Player Draft System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+    <title>In-House Draft</title>
+    <script>
+        // Improved player selection functionality
+        let selectedPlayers = [];
+
+        function selectPlayer(player) {
+            if (!selectedPlayers.includes(player)) {
+                selectedPlayers.push(player);
+                displaySelectedPlayers();
+            }
         }
-        h1 {
-            text-align: center;
+
+        function removePlayer(player) {
+            selectedPlayers = selectedPlayers.filter(p => p !== player);
+            displaySelectedPlayers();
         }
-        .coach {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        function displaySelectedPlayers() {
+            const selectedList = document.getElementById('selectedPlayers');
+            selectedList.innerHTML = '';
+            selectedPlayers.forEach(player => {
+                const li = document.createElement('li');
+                li.innerText = player;
+                const removeButton = document.createElement('button');
+                removeButton.innerText = 'Remove';
+                removeButton.onclick = () => removePlayer(player);
+                li.appendChild(removeButton);
+                selectedList.appendChild(li);
+            });
         }
-        .available-players, .selected-players {
-            display: inline-block;
-            width: 45%;
-            vertical-align: top;
-            margin: 0 2%;
-        }
-        .button {
-            padding: 10px 15px;
-            margin: 5px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-    </style>
+    </script>
 </head>
 <body>
-    <h1>6-Coach Basketball Player Draft System</h1>
-    <div id="draft-system">
-        <div class="coach">
-            <h2>Coach 1</h2>
-            <div class="available-players">
-                <h3>Available Players</h3>
-                <ul id="available-players-1">
-                    <!-- List of available players will be dynamically generated here -->
-                </ul>
-            </div>
-            <div class="selected-players">
-                <h3>Selected Players</h3>
-                <ul id="selected-players-1">
-                    <!-- List of selected players will be dynamically generated here -->
-                </ul>
-            </div>
-            <button class="button" onclick="selectPlayer(1)">Select Player</button>
-        </div>
-        <div class="coach">
-            <h2>Coach 2</h2>
-            <div class="available-players">
-                <h3>Available Players</h3>
-                <ul id="available-players-2">
-                    <!-- List of available players will be dynamically generated here -->
-                </ul>
-            </div>
-            <div class="selected-players">
-                <h3>Selected Players</h3>
-                <ul id="selected-players-2">
-                    <!-- List of selected players will be dynamically generated here -->
-                </ul>
-            </div>
-            <button class="button" onclick="selectPlayer(2)">Select Player</button>
-        </div>
-        <!-- Add more coaches as needed... -->
-    </div>
-    <script>
-        const playersPool = [
-            'Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5',
-            'Player 6', 'Player 7', 'Player 8', 'Player 9', 'Player 10'
-        ];
-        const maxPlayersPerCoach = 7;
-        const selectedPlayers = {};
-
-        function initialize() {
-            for (let i = 1; i <= 6; i++) {
-                selectedPlayers[i] = [];
-                const availablePlayersList = document.getElementById(`available-players-${i}`);
-                playersPool.forEach(player => {
-                    const li = document.createElement('li');
-                    li.textContent = player;
-                    availablePlayersList.appendChild(li);
-                });
-            }
-        }
-
-        function selectPlayer(coachId) {
-            const availableList = document.getElementById(`available-players-${coachId}`);
-            const selectedList = document.getElementById(`selected-players-${coachId}`);
-            const availablePlayers = Array.from(availableList.getElementsByTagName('li'));
-
-            if (selectedPlayers[coachId].length < maxPlayersPerCoach && availablePlayers.length > 0) {
-                const playerToSelect = availablePlayers[0]; // Select the first available player
-                selectedPlayers[coachId].push(playerToSelect.textContent);
-                const selectedLi = document.createElement('li');
-                selectedLi.textContent = playerToSelect.textContent;
-                selectedList.appendChild(selectedLi);
-                availableList.removeChild(playerToSelect);
-            } else {
-                alert('Cannot select player. Either you have reached the maximum limit or no players are available.');
-            }
-        }
-
-        initialize();
-    </script>
+    <h1>In-House Draft</h1>
+    <h2>Coaches:</h2>
+    <ul>
+        <li onclick="selectPlayer('Coach Diamond')">Coach Diamond</li>
+        <li onclick="selectPlayer('Coach Rich')">Coach Rich</li>
+        <li onclick="selectPlayer('Coach George')">Coach George</li>
+        <li onclick="selectPlayer('Coach Jonas')">Coach Jonas</li>
+        <li onclick="selectPlayer('Coach Brennen')">Coach Brennen</li>
+        <li onclick="selectPlayer('Coach Six')">Coach Six</li>
+    </ul>
+    <h2>Selected Coaches:</h2>
+    <ul id="selectedPlayers"></ul>
 </body>
 </html>
