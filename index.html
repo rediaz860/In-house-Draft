@@ -3,50 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In-House Draft</title>
-    <script>
-        // Improved player selection functionality
-        let selectedPlayers = [];
-
-        function selectPlayer(player) {
-            if (!selectedPlayers.includes(player)) {
-                selectedPlayers.push(player);
-                displaySelectedPlayers();
-            }
-        }
-
-        function removePlayer(player) {
-            selectedPlayers = selectedPlayers.filter(p => p !== player);
-            displaySelectedPlayers();
-        }
-
-        function displaySelectedPlayers() {
-            const selectedList = document.getElementById('selectedPlayers');
-            selectedList.innerHTML = '';
-            selectedPlayers.forEach(player => {
-                const li = document.createElement('li');
-                li.innerText = player;
-                const removeButton = document.createElement('button');
-                removeButton.innerText = 'Remove';
-                removeButton.onclick = () => removePlayer(player);
-                li.appendChild(removeButton);
-                selectedList.appendChild(li);
-            });
-        }
-    </script>
+    <title>Professional Basketball Draft Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .team { margin: 20px; padding: 10px; border: 1px solid #ccc; }
+        h2 { color: #333; }
+    </style>
 </head>
 <body>
-    <h1>In-House Draft</h1>
-    <h2>Coaches:</h2>
-    <ul>
-        <li onclick="selectPlayer('Coach Diamond')">Coach Diamond</li>
-        <li onclick="selectPlayer('Coach Rich')">Coach Rich</li>
-        <li onclick="selectPlayer('Coach George')">Coach George</li>
-        <li onclick="selectPlayer('Coach Jonas')">Coach Jonas</li>
-        <li onclick="selectPlayer('Coach Brennen')">Coach Brennen</li>
-        <li onclick="selectPlayer('Coach Six')">Coach Six</li>
-    </ul>
-    <h2>Selected Coaches:</h2>
-    <ul id="selectedPlayers"></ul>
+    <h1>Professional Basketball Draft</h1>
+    <div class="team">
+        <h2>Coach Diamond</h2>
+        <ul>
+            <li>Jahmari Bennefield</li>
+            <li>Jahsaih Taylor</li>
+            <li>Chaise Walcott</li>
+            <li>Divontae Williams</li>
+            <li>Sermir Brunson</li>
+            <li>Lomir Otto</li>
+            <li>Ryan Smalling</li>
+        </ul>
+    </div>
+    <div class="team">
+        <h2>Coach Rich</h2>
+        <ul>
+            <li>Khaliq Waite</li>
+            <li>Kayvon</li>
+            <li>Anthony Maclean</li>
+            <li>Duane Davis</li>
+            <li>Bry'Aire Hales</li>
+            <li>Tremaine Jackson</li>
+            <li>Trevor Davis</li>
+        </ul>
+    </div>
+    <div class="team">
+        <h2>Coach George</h2>
+        <ul>
+            <li>Eliezel Torres</li>
+            <li>Jemere Ormsby</li>
+            <li>Jasiri Maribei</li>
+            <li>Jashon Ford</li>
+            <li>Calvin Chaney</li>
+            <li>Diamond Buckly</li>
+            <li>Ahzy Champion</li>
+        </ul>
+    </div>
+    <div class="team">
+        <h2>Coach Jonas</h2>
+        <ul>
+            <li>Alon Gibson</li>
+            <li>Jamair Copeland</li>
+            <li>Jaquan Reynolds</li>
+            <li>Able Ceasar</li>
+            <li>Gavin Ashby</li>
+            <li>Isaac Burgos</li>
+            <li>JJ Haughton</li>
+        </ul>
+    </div>
+    <div class="team">
+        <h2>Coach Brennen</h2>
+        <ul>
+            <li>Keneilia Morgan</li>
+            <li>Ffrino</li>
+            <li>Isaac Dennis</li>
+            <li>Za'Kye Cameron</li>
+            <li>Norberto Antonett</li>
+            <li>Kendal Hurst</li>
+            <li>Eriel Rivera</li>
+        </ul>
+    </div>
+    <div class="team">
+        <h2>Coach Six</h2>
+        <ul>
+            <li>Joaniel Nunez</li>
+            <li>Darius Lyn</li>
+            <li>Nathaniel Jones</li>
+            <li></li>  
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 </body>
 </html>
